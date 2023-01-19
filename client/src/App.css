@@ -35,6 +35,15 @@
   color: #61dafb;
 }
 
+/* Add Styling for Signup form to center the form...classname = signup-form */
+.add-sleep-form {
+  border: 1px solid black;
+  margin: 15px 30px 15px 30px;
+}
+
+.signup-form {
+  align-items: center;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
