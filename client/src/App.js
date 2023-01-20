@@ -42,7 +42,7 @@ function App() {
       <header className="App-header">
        <Routes>
         <Route path='/'  element={<Home/>} />
-        <Route path='/appts' element={<Appointments/>} />
+        <Route path='/appointments' element={<Appointments/>} />
         <Route path='/sleep_records' element={
             <SleepRecords sleepRecords={sleepRecords}/>
             } 

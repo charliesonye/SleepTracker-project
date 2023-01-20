@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/recommendations', to: 'recommendations#index'
 
   resources :sleep_records
+  resources :appointments
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

@@ -35,7 +35,7 @@ const linkStyles = {
       <NavLink to='/sleep_records' style={linkStyles}> 
         Sleep Records
       </NavLink>
-      <NavLink to='/appts' style={linkStyles}> 
+      <NavLink to='/appointments' style={linkStyles}> 
         Appointments
       </NavLink>
       <NavLink to='/sleep_tip' style={linkStyles}>
