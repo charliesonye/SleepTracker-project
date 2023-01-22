@@ -13,6 +13,7 @@ import SleepRecords from './Pages/SleepRecords';
 function App() {
   const [user, setUser] = useState(null)
   const [sleepRecords, setSleepRecords] = useState([])
+  const [recommendations, setRecommendations] = useState([])
   const navigate = useNavigate()
 
   useEffect(()=>{
@@ -30,8 +31,28 @@ function App() {
     .then((data)=>  setSleepRecords(data))
   }, [])
 
+  useEffect(()=>{
+
+    fetch('/recommendations')
+    .then((res)=> res.json())
+    .then((data)=> setRecommendations(data))
+  }, [])
+
   function addSleepRecord(newRecord){
     setSleepRecords([...sleepRecords, newRecord])
+  }
+
+  function handleUpdateSleepRecord(updatedObj){
+    const updatedSleepRecords = sleepRecords.map((sleepRecord) =>{
+      if(sleepRecords.id === updatedObj.id){
+        return updatedObj
+      }else {
+        return sleepRecords
+      }
+
+      })
+  
+    setSleepRecords(updatedSleepRecords)
   }
 
   if(!user) return <Login onLogin={setUser} />
@@ -44,12 +65,12 @@ function App() {
         <Route path='/'  element={<Home/>} />
         <Route path='/appointments' element={<Appointments/>} />
         <Route path='/sleep_records' element={
-            <SleepRecords sleepRecords={sleepRecords}/>
+            <SleepRecords sleepRecords={sleepRecords} recommendations={recommendations} onHandleUpdate={handleUpdateSleepRecord}/>
             } 
         /> 
         <Route path='/sleep_tip' element={<SleepTip/>} />
         <Route path='/add_sleep_time' element={
-            <AddSleepTimeForm user = {user} onAddSleepRecord={addSleepRecord} />
+            <AddSleepTimeForm user = {user} onAddSleepRecord={addSleepRecord} recommendations={recommendations} />
             }
         />
        

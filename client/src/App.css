@@ -41,6 +41,11 @@
   margin: 15px 30px 15px 30px;
 }
 
+.sleep-record {
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
 .signup-form {
   align-items: center;
 }

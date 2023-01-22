@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import SleepRecord from '../Components.js/SleepRecord'
 
- function SleepRecords({sleepRecords}) {
+ function SleepRecords({sleepRecords, recommendations}) {
   console.log(sleepRecords)
-  const sleepRecordsList = sleepRecords?.map((sleepRecord)=> <SleepRecord sleepRecord={sleepRecord} />)
+  const sleepRecordsList = sleepRecords?.map((sleepRecord)=> <SleepRecord sleepRecord={sleepRecord} recommendations={recommendations} />)
   
     return (
     <div>

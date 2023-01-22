@@ -13,6 +13,12 @@ class SleepRecordsController < ApplicationController
         render json: sleep_record
     end
 
+    def update
+        sleep_record = SleepRecord.find_by(id: params[:id])
+        sleep_record.update(date: params[:date])
+        render json: sleep_record
+    end
+
 
     private
 

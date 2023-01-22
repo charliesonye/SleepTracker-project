@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function AddSleepTimeForm({user, onAddSleepRecord}) {
+function AddSleepTimeForm({user, onAddSleepRecord, recommendations}) {
   
   const [formData, setFormData] = useState({
     date: '',
@@ -12,14 +12,14 @@ function AddSleepTimeForm({user, onAddSleepRecord}) {
     user_id: ''
 
   })
-  const [recommendations, setRecommendations] = useState([])
+  
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    fetch('/recommendations')
-    .then((res)=> res.json())
-    .then((data)=> setRecommendations(data))
-  }, [])
+  //   fetch('/recommendations')
+  //   .then((res)=> res.json())
+  //   .then((data)=> setRecommendations(data))
+  // }, [])
 
   function handleChange(e){
     setFormData({...formData, [e.target.name]: e.target.value}) 
