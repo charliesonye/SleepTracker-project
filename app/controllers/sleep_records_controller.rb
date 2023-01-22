@@ -19,6 +19,11 @@ class SleepRecordsController < ApplicationController
         render json: sleep_record
     end
 
+    def destroy
+        sleep_record = SleepRecord.find_by(id: params[:id])
+        sleep_record.destroy
+        head :no_content
+    end
 
     private
 

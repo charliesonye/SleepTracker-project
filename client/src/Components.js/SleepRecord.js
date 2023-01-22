@@ -1,17 +1,27 @@
 import React, {useState} from 'react'
 import EditForm from './EditForm'
 
-function SleepRecord({sleepRecord, recommendations}) {
+function SleepRecord({sleepRecord, recommendations, onHandleUpdate, onHandleDelete}) {
   const [showFullRecord, setShowFullRecord] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
   function toggleView(){
     setShowFullRecord(!showFullRecord)
   }
 
+  function deleteRecord(){
+    fetch(`/sleep_records/${sleepRecord.id}`, {
+        method: 'DELETE'
+    })
+    onHandleDelete(sleepRecord.id)
+
+    
+  }
+
   return (
     <div className='sleep-record'>
         
-        <button onClick={()=> setShowEdit(!showEdit)} >Edit Sleep Record</button>
+        <button onClick={()=> setShowEdit(!showEdit)} >Edit Sleep Record Date</button>
+        <button onClick={deleteRecord}>Delete Sleep Record</button>
         {
             showEdit ? 
 
@@ -21,6 +31,7 @@ function SleepRecord({sleepRecord, recommendations}) {
                     sleepRecord={sleepRecord}
                     showEdit={showEdit}
                     setShowEdit={setShowEdit}
+                    onHandleUpdate={onHandleUpdate}
                 />
             )
             :

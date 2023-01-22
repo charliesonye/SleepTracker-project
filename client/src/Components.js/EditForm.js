@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function EditForm({recommendations, sleepRecord, showEdit, setShowEdit}) {
+function EditForm({recommendations, sleepRecord, showEdit, setShowEdit, onHandleUpdate}) {
 
     const [date, setDate] = useState('')
 
@@ -22,7 +22,8 @@ function EditForm({recommendations, sleepRecord, showEdit, setShowEdit}) {
         })
         .then((res)=> res.json())
         .then((data)=> {
-            console.log(data)
+            
+            onHandleUpdate(data)
             setShowEdit(!showEdit)
         })
         

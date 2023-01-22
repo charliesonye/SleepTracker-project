@@ -44,15 +44,21 @@ function App() {
 
   function handleUpdateSleepRecord(updatedObj){
     const updatedSleepRecords = sleepRecords.map((sleepRecord) =>{
-      if(sleepRecords.id === updatedObj.id){
+      if(sleepRecord.id === updatedObj.id){
         return updatedObj
       }else {
-        return sleepRecords
+        return sleepRecord
       }
 
       })
   
     setSleepRecords(updatedSleepRecords)
+  }
+
+  function handleDeleteSleepRecord(id){
+    const newListOfSleepRecords = sleepRecords.filter(record=> record.id !== parseInt(id))
+    
+    setSleepRecords(newListOfSleepRecords)
   }
 
   if(!user) return <Login onLogin={setUser} />
@@ -65,7 +71,12 @@ function App() {
         <Route path='/'  element={<Home/>} />
         <Route path='/appointments' element={<Appointments/>} />
         <Route path='/sleep_records' element={
-            <SleepRecords sleepRecords={sleepRecords} recommendations={recommendations} onHandleUpdate={handleUpdateSleepRecord}/>
+            <SleepRecords 
+              sleepRecords={sleepRecords} 
+              recommendations={recommendations} 
+              onHandleUpdate={handleUpdateSleepRecord}
+              onHandleDelete={handleDeleteSleepRecord}
+            />
             } 
         /> 
         <Route path='/sleep_tip' element={<SleepTip/>} />

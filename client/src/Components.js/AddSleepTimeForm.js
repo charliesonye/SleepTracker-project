@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function AddSleepTimeForm({user, onAddSleepRecord, recommendations}) {
   
@@ -12,6 +13,7 @@ function AddSleepTimeForm({user, onAddSleepRecord, recommendations}) {
     user_id: ''
 
   })
+  const navigate = useNavigate()
   
 
   // useEffect(()=>{
@@ -46,7 +48,10 @@ function AddSleepTimeForm({user, onAddSleepRecord, recommendations}) {
       body: JSON.stringify(newRecord)
     })
     .then((res)=> res.json())
-    .then((data)=> onAddSleepRecord(data))
+    .then((data)=> {
+      onAddSleepRecord(data)
+      navigate('/sleep_records')
+    })
   }
   
   return (
