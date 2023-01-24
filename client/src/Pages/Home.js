@@ -1,82 +1,26 @@
 import React from 'react'
-import {Line} from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import {Link} from 'react-router-dom'
+import sheep from '../ovelha-sheep.gif'
 
 
-
- function Home({sleepRecords}) {
-  
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'bottom' ,
-      },
-      title: {
-        display: true,
-        text: 'Sleep Chart',
-      },
-    },
-  };
-  
-  const sleepRecordDates = sleepRecords?.map((record)=> `1/${record.date.slice(8)}`)
-
- const sleepRecordStartTime = sleepRecords?.map((record=> record.start_sleep.slice(0,2)))
-  
- 
-  const sleepRecordEndTime = sleepRecords?.map((record)=> record.end_sleep.slice(0,2))
-  const labels = sleepRecordDates
- 
-  const data = {
-    
-    labels,
-    datasets: [
-      {
-        label: 'Start of Sleep Times',
-        data: labels.map((random, index) => sleepRecordStartTime[index]),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'End of Sleep Times',
-        data: labels.map((random, index) => sleepRecordEndTime[index]),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
-    ],
-  };
-  
-
-
- 
+ function Home() {
   return (
     <div>
-    <u>Slumber Tracker Homepage</u><br/>
-    <Line options={options} data={data} />
+      <h2><u>Slumber Tracking App</u></h2>
 
-    
-    
+      <h4>
+        "You can track sleep times, identify patterns for correction purposes and even schedule 
+          time with a Cognitive Behaviorial Therapist if additional help is needed."
+      </h4>
+
+    <Link to='/add_sleep_time' style={{color: 'red'}}>
+      Click here to start adding your sleep data!
+    </Link><br/>
+
+    <img src={sheep} alt='Sheep Counter' className='sheep-counter' />
+
     </div>
   )
 }
 
-export default Home 
+export default Home

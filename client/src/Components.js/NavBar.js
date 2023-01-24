@@ -39,7 +39,7 @@ const linkStyles = {
         Appointments
       </NavLink>
       <NavLink to='/sleep_chart' style={linkStyles}>
-        Sleep Tip
+        Sleep Chart
       </NavLink>
       <NavLink to='/add_sleep_time' style={linkStyles}>
         Add Sleep Time

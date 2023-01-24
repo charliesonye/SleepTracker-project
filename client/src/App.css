@@ -41,9 +41,21 @@
   margin: 15px 30px 15px 30px;
 }
 
+.sleep-chart {
+  height: 70%;
+  width: 60%;
+}
+
 .sleep-record {
   border: 1px solid black;
   margin-bottom: 10px;
+}
+
+.sheep-counter {
+  height: 200px;
+  border-radius: 25%;
+  margin: 15px;
+  border: 30px solid black;
 }
 
 .signup-form {
