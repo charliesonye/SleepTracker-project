@@ -12,7 +12,7 @@ import AddAppointmentForm from '../Components.js/AddAppointmentForm'
     fetch('/appointments')
     .then((res)=> res.json())
     .then((data)=> setAppointments(data))
-  }, [appointments])
+  }, [])
 
   function addAppointment(newAppointment){
     setAppointments([...appointments, newAppointment])

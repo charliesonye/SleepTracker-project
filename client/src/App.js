@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate} from 'react-router-dom'
-import {useState, useEffect, createContext} from 'react'
+import {useState, useEffect} from 'react'
 import './App.css';
 import Home from './Pages/Home';
 import Appointments from './Pages/Appointments';
@@ -16,14 +16,13 @@ function App() {
   const [sleepRecords, setSleepRecords] = useState([])
   const [recommendations, setRecommendations] = useState([])
   const navigate = useNavigate()
- 
-  
+
 
   useEffect(()=>{
     fetch('/me').then((res)=>{
       if(res.ok){
         res.json().then((user)=> setUser(user))
-        
+        navigate('/')
       }
     })
   }, [])
@@ -79,7 +78,7 @@ function App() {
         
 
 
-            <Route path='/'  element={<Home sleepRecords={sleepRecords}/>} />
+            <Route path='/sleep_chart'  element={<Home sleepRecords={sleepRecords}/>} />
             <Route path='/appointments' element={<Appointments/>} />
             <Route path='/sleep_records' element={
                 <SleepRecords 
@@ -90,7 +89,7 @@ function App() {
                 />
                 } 
             /> 
-            <Route path='/sleep_tip' element={<SleepTip/>} />
+            <Route path='/' element={<SleepTip/>} />
             <Route path='/add_sleep_time' element={
                 <AddSleepTimeForm  onAddSleepRecord={addSleepRecord} recommendations={recommendations} />
                 }

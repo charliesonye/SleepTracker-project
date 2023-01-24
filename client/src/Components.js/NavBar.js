@@ -1,8 +1,8 @@
 import React from 'react'
-import {NavLink, useNavigate, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
  function NavBar({setUser}) {
- const navigate = useNavigate()
+ 
 
 const linkStyles = {
   display: "inline-block",
@@ -38,7 +38,7 @@ const linkStyles = {
       <NavLink to='/appointments' style={linkStyles}> 
         Appointments
       </NavLink>
-      <NavLink to='/sleep_tip' style={linkStyles}>
+      <NavLink to='/sleep_chart' style={linkStyles}>
         Sleep Tip
       </NavLink>
       <NavLink to='/add_sleep_time' style={linkStyles}>
