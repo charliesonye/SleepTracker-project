@@ -11,11 +11,12 @@
 
 ## Project Description
 
-This project allows football fans to create teams with players of their choosing like in fantasy sports.
+This project allows users to view their sleep patterns, receive help to improve them and also schedule meetings with professional Cognitive Behavioral Therapist to speak about resolving sleep-related issues.
 
 ## Features
-* Full crud capabilities with competition data 
-* Able to add players, reviews and teams to database
+* Full crud capabilities with Sleep Record data 
+* Able to view a chart of with Sleep Record data to identify patterns
+* Able to schedule/add appointment times inside of account
 
 ## Client Technologies
 The technologies used within this app:
