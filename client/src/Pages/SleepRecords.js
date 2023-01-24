@@ -4,6 +4,7 @@ import SleepRecord from '../Components.js/SleepRecord'
  function SleepRecords({sleepRecords, recommendations, onHandleUpdate, onHandleDelete}) {
   
   const sleepRecordsList = sleepRecords?.map((sleepRecord)=> <SleepRecord 
+      key={sleepRecord.id}
       sleepRecord={sleepRecord} 
       recommendations={recommendations} 
       onHandleUpdate={onHandleUpdate} 

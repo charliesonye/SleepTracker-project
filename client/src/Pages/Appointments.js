@@ -2,9 +2,12 @@ import React, {useState, useEffect} from 'react'
 import Appointment from '../Components.js/Appointment'
 import AddAppointmentForm from '../Components.js/AddAppointmentForm'
 
+
+
  function Appointments() {
   const [appointments, setAppointments] = useState([])
-
+  
+  
   useEffect(()=>{
     fetch('/appointments')
     .then((res)=> res.json())
@@ -15,7 +18,7 @@ import AddAppointmentForm from '../Components.js/AddAppointmentForm'
     setAppointments([...appointments, newAppointment])
   }
   
-  const appointmentsList = appointments?.map((appointment)=> <Appointment appointment={appointment} />)
+  const appointmentsList = appointments?.map((appointment)=> <Appointment key={appointment.id} appointment={appointment} />)
   return (
     <div>
       <AddAppointmentForm onAddAppointment={addAppointment}/><br/>

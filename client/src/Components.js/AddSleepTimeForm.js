@@ -1,15 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
+import { UserContext } from '../Components.js/UserContext'
 
-function AddSleepTimeForm({user, onAddSleepRecord, recommendations}) {
+function AddSleepTimeForm({ onAddSleepRecord, recommendations}) {
   
+  const user = useContext(UserContext)
+ 
   const [formData, setFormData] = useState({
     date: '',
     disruptor: '',
     recommendation_1: '',
     recommendation_2: '',
-    start_sleep: null,
-    end_sleep: null,
+    start_sleep: '',
+    end_sleep: '',
     user_id: ''
 
   })

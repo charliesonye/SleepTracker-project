@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate} from 'react-router-dom'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, createContext} from 'react'
 import './App.css';
 import Home from './Pages/Home';
 import Appointments from './Pages/Appointments';
@@ -8,6 +8,7 @@ import AddSleepTimeForm from './Components.js/AddSleepTimeForm';
 import NavBar from './Components.js/NavBar';
 import Login from './Pages/Login';
 import SleepRecords from './Pages/SleepRecords';
+import {UserContext} from './Components.js/UserContext'
 
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
   const [sleepRecords, setSleepRecords] = useState([])
   const [recommendations, setRecommendations] = useState([])
   const navigate = useNavigate()
+ 
+  
 
   useEffect(()=>{
     fetch('/me').then((res)=>{
@@ -24,6 +27,8 @@ function App() {
       }
     })
   }, [])
+
+  
 
   useEffect(()=>{
     fetch('/sleep_records')
@@ -38,6 +43,7 @@ function App() {
     .then((data)=> setRecommendations(data))
   }, [])
 
+  
   function addSleepRecord(newRecord){
     setSleepRecords([...sleepRecords, newRecord])
   }
@@ -60,6 +66,7 @@ function App() {
     
     setSleepRecords(newListOfSleepRecords)
   }
+  
 
   if(!user) return <Login onLogin={setUser} />
   return (
@@ -67,25 +74,31 @@ function App() {
       
         <NavBar setUser={setUser} />
       <header className="App-header">
-       <Routes>
-        <Route path='/'  element={<Home/>} />
-        <Route path='/appointments' element={<Appointments/>} />
-        <Route path='/sleep_records' element={
-            <SleepRecords 
-              sleepRecords={sleepRecords} 
-              recommendations={recommendations} 
-              onHandleUpdate={handleUpdateSleepRecord}
-              onHandleDelete={handleDeleteSleepRecord}
+      <UserContext.Provider value={user}>
+        <Routes>
+        
+
+
+            <Route path='/'  element={<Home sleepRecords={sleepRecords}/>} />
+            <Route path='/appointments' element={<Appointments/>} />
+            <Route path='/sleep_records' element={
+                <SleepRecords 
+                  sleepRecords={sleepRecords} 
+                  recommendations={recommendations} 
+                  onHandleUpdate={handleUpdateSleepRecord}
+                  onHandleDelete={handleDeleteSleepRecord}
+                />
+                } 
+            /> 
+            <Route path='/sleep_tip' element={<SleepTip/>} />
+            <Route path='/add_sleep_time' element={
+                <AddSleepTimeForm  onAddSleepRecord={addSleepRecord} recommendations={recommendations} />
+                }
             />
-            } 
-        /> 
-        <Route path='/sleep_tip' element={<SleepTip/>} />
-        <Route path='/add_sleep_time' element={
-            <AddSleepTimeForm user = {user} onAddSleepRecord={addSleepRecord} recommendations={recommendations} />
-            }
-        />
-       
-       </Routes>
+        
+        
+        </Routes>
+       </UserContext.Provider>
        
       </header>
       
@@ -95,3 +108,19 @@ function App() {
 }
 
 export default App;
+
+
+
+// function hoursBetween(time1, time2) {
+//   // Convert the times to date objects
+//   const date1 = new Date("1970-01-01 " + time1);
+//   const date2 = new Date("1970-01-01 " + time2);
+
+//   // Calculate the difference in milliseconds
+//   const difference = date2 - date1;
+
+//   // Convert the difference to hours
+//   const hours = difference / 1000 / 60 / 60;
+
+//   return hours;
+// }
