@@ -51,13 +51,13 @@ ChartJS.register(
     datasets: [
       {
         label: 'Start of Sleep Times(Bed Time)',
-        data: labels.map((random, index) => sleepRecordStartTime[index]),
+        data: labels.map((label, index) => sleepRecordStartTime[index]),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'End of Sleep Times(Wake up)',
-        data: labels.map((random, index) => sleepRecordEndTime[index]),
+        data: labels.map((label, index) => sleepRecordEndTime[index]),
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
