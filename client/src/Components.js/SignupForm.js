@@ -48,6 +48,7 @@ import {useState} from 'react'
         
       }else{
         res.json().then((err)=> setErrors(err.errors))
+       
       }
     })
 
@@ -110,7 +111,7 @@ import {useState} from 'react'
       <input type='submit' />
 
       </form>
-      
+      <h3>{errors[0]}</h3>
       
     </div>
   )

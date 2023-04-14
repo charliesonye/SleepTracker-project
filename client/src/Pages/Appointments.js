@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import Appointment from '../Components.js/Appointment'
 import AddAppointmentForm from '../Components.js/AddAppointmentForm'
 
@@ -6,8 +7,9 @@ import AddAppointmentForm from '../Components.js/AddAppointmentForm'
 
  function Appointments() {
   const [appointments, setAppointments] = useState([])
-  
-  
+
+   
+
   useEffect(()=>{
     fetch('/appointments')
     .then((res)=> res.json())
@@ -22,7 +24,9 @@ import AddAppointmentForm from '../Components.js/AddAppointmentForm'
   return (
     <div>
       <AddAppointmentForm onAddAppointment={addAppointment}/><br/>
-      
+      <Link to='/users_therapist'>
+        List of Associated Therapists
+      </Link>
       <h3><u>Upcoming Appointments</u></h3>
       
       {

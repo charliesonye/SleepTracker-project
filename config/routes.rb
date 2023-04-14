@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/recommendations', to: 'recommendations#index'
 
+  get '/users_therapist', to: 'therapists#index'
+
   resources :sleep_records
   resources :appointments
 

@@ -9,12 +9,14 @@ import NavBar from './Components.js/NavBar';
 import Login from './Pages/Login';
 import SleepRecords from './Pages/SleepRecords';
 import {UserContext} from './Components.js/UserContext'
+import UsersTherapist from './Pages/UsersTherapist';
 
 
 function App() {
   const [user, setUser] = useState(null)
   const [sleepRecords, setSleepRecords] = useState([])
   const [recommendations, setRecommendations] = useState([])
+  const [therapists, setTherapists] = useState([])
   const navigate = useNavigate()
 
 
@@ -41,6 +43,12 @@ function App() {
     .then((res)=> res.json())
     .then((data)=> setRecommendations(data))
   }, [])
+
+  useEffect(()=>{
+    fetch('/users_therapist')
+    .then((res)=> res.json())
+    .then((data)=> setTherapists(data))
+}, [])
 
   
   function addSleepRecord(newRecord){
@@ -89,6 +97,7 @@ function App() {
                 />
                 } 
             /> 
+            <Route path='/users_therapist' element={<UsersTherapist therapists={therapists} />} />
             <Route path='/' element={<Home/>} />
             <Route path='/add_sleep_time' element={
                 <AddSleepTimeForm  onAddSleepRecord={addSleepRecord} recommendations={recommendations} />
