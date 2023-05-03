@@ -43,7 +43,10 @@
 
 .sleep-chart {
   height: 70%;
-  width: 60%;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 50px;
+  border: solid;
 }
 
 .sleep-record {

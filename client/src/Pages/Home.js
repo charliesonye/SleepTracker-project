@@ -1,9 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import sheep from '../ovelha-sheep.gif'
+import SleepChart from '../Pages/SleepChart'
 
 
- function Home() {
+ function Home({sleepRecords}) {
   return (
     <div>
       <h2><u>Slumber Tracking App</u></h2>
@@ -18,7 +19,7 @@ import sheep from '../ovelha-sheep.gif'
     </Link><br/>
 
     <img src={sheep} alt='Sheep Counter' className='sheep-counter' />
-
+    <SleepChart sleepRecords={sleepRecords} />
     </div>
   )
 }

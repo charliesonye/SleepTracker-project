@@ -56,7 +56,7 @@ ChartJS.register(
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
-        label: 'End of Sleep Times(Wake up)',
+        label: 'End of Sleep Times(Wake Up Time)',
         data: labels.map((label, index) => sleepRecordEndTime[index]),
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -69,7 +69,7 @@ ChartJS.register(
  
   return (
     <div className='sleep-chart'>
-    <h2><u>Sleep Chart</u></h2><br/>
+    <h2><u>Sleep Chart</u></h2>
     <Line options={options} data={data}  />
 
     

@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import './App.css';
-import SleepChart from './Pages/SleepChart';
+// import SleepChart from './Pages/SleepChart';
 import Appointments from './Pages/Appointments';
 import Home from './Pages/Home';
 import AddSleepTimeForm from './Components.js/AddSleepTimeForm';
@@ -86,7 +86,7 @@ function App() {
         
 
 
-            <Route path='/sleep_chart'  element={<SleepChart sleepRecords={sleepRecords}/>} />
+            {/* <Route path='/sleep_chart'  element={<SleepChart />} /> */}
             <Route path='/appointments' element={<Appointments/>} />
             <Route path='/sleep_records' element={
                 <SleepRecords 
@@ -98,7 +98,7 @@ function App() {
                 } 
             /> 
             <Route path='/users_therapist' element={<UsersTherapist therapists={therapists} />} />
-            <Route path='/' element={<Home/>} />
+            <Route path='/' element={<Home sleepRecords={sleepRecords} />} />
             <Route path='/add_sleep_time' element={
                 <AddSleepTimeForm  onAddSleepRecord={addSleepRecord} recommendations={recommendations} />
                 }
