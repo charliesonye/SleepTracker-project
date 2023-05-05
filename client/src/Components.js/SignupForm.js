@@ -1,5 +1,5 @@
 import {useState} from 'react'
-
+import {Link} from 'react-router-dom'
 
 
  function SignupForm({onLogin}) {
@@ -112,6 +112,12 @@ import {useState} from 'react'
 
       </form>
       <h3>{errors[0]}</h3>
+      <Link to='/login'> 
+                <button>
+                    Log in to your account
+                </button>
+                
+      </Link>  
       
     </div>
   )

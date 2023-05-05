@@ -10,6 +10,8 @@ import Login from './Pages/Login';
 import SleepRecords from './Pages/SleepRecords';
 import {UserContext} from './Components.js/UserContext'
 import UsersTherapist from './Pages/UsersTherapist';
+import SignupForm from './Components.js/SignupForm';
+import LoginForm from './Components.js/LoginForm';
 
 
 function App() {
@@ -75,7 +77,7 @@ function App() {
   }
   
 
-  if(!user) return <Login onLogin={setUser} />
+  if(!user) return <SignupForm onLogin={setUser} />
   return (
     <div className="App">
       
@@ -88,6 +90,7 @@ function App() {
 
             {/* <Route path='/sleep_chart'  element={<SleepChart />} /> */}
             <Route path='/appointments' element={<Appointments/>} />
+            <Route path='/login' element={<LoginForm onLogin={setUser}/>} />
             <Route path='/sleep_records' element={
                 <SleepRecords 
                   sleepRecords={sleepRecords} 
